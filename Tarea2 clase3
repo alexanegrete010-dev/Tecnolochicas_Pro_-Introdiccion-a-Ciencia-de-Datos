@@ -1,0 +1,50 @@
+T2_CLASE3_TCPROG4
+
+t2_clase3
+
+Una aplicación móvil interactiva desarrollada en MIT App Inventor para la cuantificación, seguimiento acumulativo y clasificación probabilística de estados afectivos mediante eventos táctiles.
+
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+
+ Descripción
+
+La aplicación **T2_CLASE3** es una plataforma de análisis psicométrico y cuantificación emocional basada en dispositivos móviles, desarrollada en **MIT App Inventor**. La 
+aplicación proporciona una interfaz adaptativa orientada a eventos que permite registrar, contabilizar e interactuar con estados de ánimo específicos (Feliz, Triste, Enojado).
+Mediante una arquitectura de contadores independientes y reactivos, el sistema captura las selecciones del usuario en variables globales discretas, actualizando en tiempo real los 
+marcadores visuales correspondientes. Esto permite modelar la frecuencia de eventos emocionales y calcular distribuciones probabilísticas o índices de dominancia afectiva a lo largo de 
+sesiones continuas de uso.
+
+> Los datos experimentales, los recursos gráficos interactivos (`enojado.png`, `feliz.png`, `triste.png`), las estructuras de bloques y las configuraciones de interfaz
+del presente proyecto constituyen propiedad intelectual reservada. Queda prohibida la reproducción parcial o total, modificación sin atribución, distribución o explotación
+comercial sin la autorización explícita del autor, en estricto apego a las leyes de derechos de autor y propiedad intelectual.
+
+
+Características
+
+Registro Multimodal de Estados Afectivos: Captura interactiva de tres clases emocionales principales: *Feliz*, *Triste* y *Enojado*, activadas mediante botones con representación iconográfica personalizada.
+Acumuladores Globales Asíncronos: Incremento dinámico de contadores enteros globales (`puntos_f`, `puntos_t`, `puntos_e`) sincronizados de forma inmediata con etiquetas numéricas de la interfaz (`Puntos_de_Felizidad`, `Puntos_de_Tristesa`, `Puntos_de_Enojo`).
+Interfaz de Usuario Basada en Componentes:
+  Vista Principal (`Screen1`): Configurada con orientación responsiva, alineación centrada y paleta de colores personalizada (`#BFEFBF` como fondo general y bordes de acento `#7BAC7B`).
+  Contenedores de Layout Horizontales: Disposiciones horizontales (`HorizontalArrangement` y `HorizontalScrollArrangement`) que garantizan el aislamiento estructural de cada métrica emocional.
+  Separadores Estructurales: Espaciadores horizontales de dimensiones fijas para optimizar la jerarquía visual de la aplicación.
+Mecanismos de Procesamiento y Reglas de Flujo:
+  Regla de Acumulación Aditiva: $X_{t+1} = X_t + 1$ por cada evento `Click`.
+  Actualización en Cascada de Interfaz: Re-renderizado de propiedades de texto inmediatamente posterior a la mutación del estado en memoria global.
+
+ Instalación
+
+Requisitos Previos
+Dispositivo Android: Dispositivo con sistema operativo Android versión 5.0 (API Level 21) o superior y cámara funcional.
+Activos Multimedia: Archivos de activos multimedia incluidos en el proyecto (`cat.jpeg`, `cat-89108.mp3`, `feliz.png`, `triste.png`, `enojado.png`).
+Entorno de Desarrollo: Entorno de desarrollo MIT App Inventor 2.0+ (para importar y compilar el archivo `.aia` del proyecto).
+Extensiones de IA: Extensión de Teachable Machine para MIT App Inventor (`LookExtension`) integrada.
+
+
+
+ Uso
+
+1. Selección del Estado de Ánimo: Presiona cualquiera de las tres imágenes/botones principales (Feliz, Triste, Enojado).
+2. Visualización de Contadores: Observa cómo la etiqueta numérica asociada al botón seleccionado incrementa su valor en $+1$ de forma inmediata.
+3. Evaluación de Totales: La aplicación mantendrá los contadores vigentes durante toda la sesión, permitiendo evaluar qué estado emocional ha acumulado la mayor cantidad de interacciones.
+
