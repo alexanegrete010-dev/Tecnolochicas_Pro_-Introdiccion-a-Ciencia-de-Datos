@@ -1,0 +1,43 @@
+ T1_CLASE1_MITAPPINVENTOR
+
+ Aplicación para Análisis de Crecimiento Microbiano y Modelado Cinético
+
+Aplicación móvil desarrollada en MIT App Inventor para el procesamiento, visualización interactiva y modelado cinético matemático de datos de crecimiento bacteriano y ambiental.
+
+
+Menú de Navegación Rápida:
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+
+ Descripción
+
+La aplicación **T1_CLASE1** es un sistema móvil interactivo orientado a la bioinformática y al procesamiento de datos experimentales de crecimiento microbiano en función del tiempo y condiciones ambientales. La herramienta permite recopilar, filtrar e interpretar cinéticas celulares, calculando parámetros cinéticos fundamentales como la tasa específica de crecimiento ($\mu$), el tiempo de duplicación ($t_d$), la fase de latencia y la capacidad de carga máxima mediante regresiones lineales y logarítmicas. Asimismo, integra capacidades de integración con APIs externas (Gemini AI ChatBot / Google Sheets) y herramientas de visualización interactiva para el análisis continuo de variables biomédicas y ambientales.
+
+>  Aviso Legal y Propiedad Intelectual:**
+> Todos los datos experimentales, mediciones cinéticas microbianas, coeficientes calculados y material multimedia incorporados en esta aplicación son propiedad exclusiva de sus respectivos autores y colaboradores del proyecto. Queda prohibida la reproducción parcial o total, redistribución o uso comercial no autorizado de las series temporales y conjuntos de datos sin el consentimiento explícito por escrito de los titulares de los derechos de autor.
+
+
+ Características
+
+ Funcionalidades Principales
+-Captura y Gestión de Datos:** Interfaz de entrada interactiva para el registro de parámetros cinéticos (tiempo $t$, densidad óptica/biomasa $X$, temperatura y pH).
+-Filtros Avanzados y Preprocesamiento:** Algoritmos integrados para la limpieza de datos de entrada, eliminación de valores atípicos (*outliers*) y normalización de series temporales.
+-Procesamiento AI / ChatBot:** Asistencia técnica y diagnóstico cualitativo mediante integración con modelos del ecosistema Gemini AI a través de peticiones HTTP/REST API.
+-Gestión Multipantalla:** Arquitectura modular basada en `Screen1` (panel principal de control e ingesta de datos) y `Screen2` (dashboard de modelos cinéticos y visualización avanzada).
+
+ Gráficos Interactivos y Vistas Disponibles
+-Curva Crecimiento Estándar ($X$ vs $t$):** Gráfica cartesiana interactiva para identificar visualmente las fases de latencia (lag), exponencial (log), estacionaria y de muerte microbiana.
+-Transformada Logarítmica ($\ln(X)$ vs $t$):** Ajuste de regresión lineal sobre la fase exponencial para la determinación gráfica y matemática de la constante de velocidad $\mu$.
+-Panel de Dispersión y Ajuste de Tendencia:** Visualización en tiempo real de residuos y coeficiente de determinación ($R^2$).
+
+ Herramientas de Análisis e Inferencia
+-Detección Automática de Anomalías:** Verificación basada en reglas de umbral para alertar sobre inconsistencias en lecturas de biomasa o desviaciones abruptas de temperatura/pH.
+-Motor de Ajuste Matemático:** Cálculo automatizado de parámetros de pendiente e intersección para modelos cinéticos de primer orden.
+
+
+ Instalación
+Requisitos Previos:
+- Dispositivo Android con versión 5.0 o superior.
+- Cuenta de Google con acceso a Google Sheets.
+- Archivo de credenciales de servicio `proyecto-final-506622-0b38008be2db.json` configurado.
+- Entorno de desarrollo **MIT App Inventor 2.0+** (para modificaciones del código fuente `.aia`).
