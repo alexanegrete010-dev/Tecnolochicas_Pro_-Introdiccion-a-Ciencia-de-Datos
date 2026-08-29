@@ -1,0 +1,70 @@
+# A1_CLASE1_TCPROG4
+
+a1_clase1 
+
+Aplicacion movil para la clasificacion e identificacion de imagenes mediante modelos de aprendizaje automatico e integracion multimedia
+
+Descripcion - Caracteristicas - Instalacion - Uso - Modelos - Estructura - Tecnologias
+
+
+ Descripcion
+
+a1_clase1 es una aplicacion movil desarrollada en MIT App Inventor enfocada en el procesamiento, identificacion y clasificacion interactiva de imagenes. La aplicacion utiliza un modelo de aprendizaje automatico (Machine Learning) previamente entrenado mediante Teachable Machine de Google, el cual se encuentra integrado de forma local en los activos del proyecto. Permite capturar o procesar elementos visuales (como imagenes de felinos), clasificar su contenido en tiempo real mediante la camara web o componentes de extension visual, y reproducir respuestas de audio asociadas a los resultados de la clasificacion.
+
+Los datos y recursos multimedia presentados en esta aplicacion corresponden a pruebas experimentales y archivos de dominio de prueba. Todos los derechos sobre la estructura del proyecto y el codigo fuente pertenecen exclusivamente al Autor. El acceso a estos componentes no implica la cesion de ningun derecho de propiedad intelectual sobre los mismos. Su uso no autorizado esta prohibido.
+
+
+ Caracteristicas
+
+Visualizacion y Clasificacion en Tiempo Real
+- Integracion directa con modelos de clasificacion de imagen de Teachable Machine.
+- Interfaz interactiva para captura de imagen y despliegue de resultados de inferencia.
+
+Graficos e Interfaz:
+- Vista principal de clasificacion (Screen1) con componentes de camara, visor de imagen (cat.jpeg) y reproduccion de audio (cat-89108.mp3).
+- Salida visual de la etiqueta detectada y el porcentaje de confianza alcanzado por el modelo.
+
+Herramientas de Procesamiento de Datos:
+- Inferencia local de vision por computadora mediante clasificadores de redes neuronales convolucionales (CNN).
+- Deteccion dinamica de eventos multimedia basada en las etiquetas predichas por el modelo.
+
+
+ Modelos Cineticos y Matematicos Implementados
+
+1. Modelo de Clasificacion mediante Red Neuronal Convolucional (CNN)
+   P(Clase | Imagen) = Softmax( W * X + b )
+   - Normalizacion de Entradas (X): Transformacion y escalado de la matriz de pixeles de la imagen de entrada a la resolucion requerida por el modelo.
+   - Funcion de Activacion Softmax: Conversion de la capa de salida en una distribucion de probabilidad para determinar la clase mas probable.
+
+2. Evaluacion de Confianza y Umbral de Inferencia
+   Confianza = max( P(Clase_i) )
+   - Asignacion del resultado basado en el valor maximo de probabilidad dentro del conjunto de clases predefinidas.
+
+3. Predicciones e Inferencia Visual
+   Clase_Predicha = argmax( P(Clase_i) )
+   - Seleccion automatica del resultado con mayor nivel de certeza para activar eventos secundarios (como la ejecucion del reproductor de sonido).
+
+
+ Instalacion
+
+Requisitos Previos:
+- Dispositivo Android con version 5.0 o superior y camara funcional.
+- Archivos de activos multimedia incluidos en el proyecto (cat.jpeg y cat-89108.mp3).
+- Entorno de desarrollo MIT App Inventor 2.0+ (para importar y compilar el archivo .aia del proyecto).
+- Extension de Teachable Machine para MIT App Inventor (LookExtension) integrada.
+
+
+ Estructura del Proyecto
+
+a1_clase1/
+|-- assets/ (Recursos multimedia e imagenes de prueba: cat.jpeg, cat-89108.mp3)
+|-- src/appinventor/ai_alexanegrete010/a1_clase1/
+|   |-- Screen1.bky (Logica visual de bloques para clasificacion e inferencia)
+|   `-- Screen1.scm (Diseno de la interfaz de usuario y configuracion de componentes)
+`-- youngandroidproject/ (Propiedades e historial del proyecto)
+
+Tecnologias Utilizadas
+- Plataforma: MIT App Inventor 2
+- Modelo de Aprendizaje Automatico: Teachable Machine (Google) / TensorFlow Lite
+- Lenguaje de Bloques: Kawa / App Inventor Component Architecture
+- Componentes Multimedia: Android Camera & Audio Player Components
