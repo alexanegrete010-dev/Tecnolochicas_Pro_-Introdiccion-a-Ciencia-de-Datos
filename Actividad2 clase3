@@ -1,0 +1,95 @@
+ A2_CLASE3_TCPROG4
+
+ a2_clase3
+
+Una aplicación móvil interactiva desarrollada en MIT App Inventor para la captura, procesamiento y reproducción sintetizada de voz en tiempo real con control dinámico de parámetros acústicos.
+
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+ Descripción
+
+La aplicación A2_CLASE3 es una solución móvil desarrollada sobre la plataforma MIT App Inventor diseñada para la interacción bidireccional mediante voz e interfaz de usuario. El sistema integra 
+componentes nativos de procesamiento de señales de audio digital, utilizando algoritmos de reconocimiento automático del habla (*Automatic Speech Recognition*, ASR) y síntesis de texto a voz
+(*Text-to-Speech*, TTS). A través de la arquitectura orientada a eventos de App Inventor, el módulo captura patrones acústicos continuos convertidos a texto, y posteriormente modela la señal
+sintética modulando variables fundamentales como el tono (*pitch*) y la tasa de elocución o ritmo (*speech rate*) mediante controles deslizantes de precisión.
+
+> **Nota sobre propiedad intelectual y derechos de autor:**
+> Los datos experimentales, arquitecturas de bloques, interfaces visuales y configuraciones del presente proyecto constituyen propiedad intelectual reservada. Queda prohibida la reproducción
+parcial o total, distribución sin autorización previa o uso comercial de los recursos incluidos en esta documentación y repositorio, de acuerdo con las normativas internacionales de derechos 
+de autor y propiedad intelectual.
+
+ Características
+Captura de Voz en Tiempo Real (ASR): Módulo de entrada basado en el componente `SpeechRecognizer` para transformar entradas fónicas en cadenas textuales legibles dentro de un campo de texto interactivo (`TextBox`).
+Síntesis Vocal Dinámica (TTS): Motor de reproducción acústica impulsado por `TextToSpeech` que convierte texto introducido o transcrito en habla sintetizada.
+Modulación Paramétrica Audiológica: Control continuo de la frecuencia fundamental de la voz (*Pitch*) y de la velocidad de elocución (*Speech Rate*) mediante potenciómetros de deslizamiento (`Slider`).
+Vistas e Interfaz Gráfica:
+ Vista Principal (`Screen1`): Layout vertical ajustado a paleta pastel personalizada (`#F5C4C4`, `#E99797`, `#A35151`).
+  Panel de Reconocimiento: Botón estilizado Di algo que desencadena la escucha activa ASR.
+  Área de Entrada/Edición: Caja de texto con alineación centrada para previsualizar o ingresar cadenas de texto.
+  Panel de Control de Reproducción: Botón Escucha las palabras e indicadores visuales de modulación de voz y ritmo.
+Procesamiento de Datos y Reglas de Flujo:
+  Detección de eventos asíncronos:Evento `AfterGettingText` para asignación inmediata del resultado reconocido al `TextBox`.
+  Normalización de Rangos:x Mapeo de valores de deslizadores en el rango real $[0.0, 2.0]$ con paso continuo para ajuste fino de frecuencia e intensidad temporal.
+
+
+ Modelos Cinéticos / Matemáticos Implementados
+
+Para la modulación del habla y la velocidad de emisión acústica, la aplicación implementa modelos matemáticos de transformación lineal y funciones de tasa temporal sobre las frecuencias de salida:
+
+1. **Modelo de Modulación de Frecuencia Fundamental (Tono / Pitch):**
+   La frecuencia modulada de salida $f(p)$ en función de la posición del deslizador $p \in [0, 2]$ se representa mediante la transformación de escalado lineal respecto a la frecuencia base $f_0$:
+   $$\ln(f) = \ln(f_0) + \mu \cdot p$$
+   
+   donde:
+   $$f(p) = f_0 \cdot 2^{p - 1}$$
+
+2. **Modelo de Tasa de Elocución Temporal (Ritmo / Speech Rate):**
+   La velocidad de elocución $v(r)$ expresada en palabras por minuto ($WPM$) respecto al valor nominal de referencia $v_0$ viene determinada por el parámetro ajustado $r \in [0, 2]$:
+   $$v(r) = v_0 \cdot r$$
+   
+   La duración total de reproducción $T(r)$ para un mensaje de $N$ palabras satisface la relación inversamente proporcional:
+   $$T(r) = \frac{N}{v(r)} = \frac{N}{v_0 \cdot r}$$
+
+### Desglose de Variables y Parámetros Calculados
+
+* $p \in [0.0, 2.0]$: Parámetro de tono (*Pitch*) capturado por `Voz_Deslizador` ($\text{Intersección} = 0.0, \text{Pendiente} = 1.0$).
+* $r \in [0.0, 2.0]$: Parámetro de ritmo (*Speech Rate*) capturado por `Ritmo_Deslisador` ($\text{Intersección} = 0.0, \text{Pendiente} = 1.0$).
+* $f_0$: Frecuencia fundamental natural de la voz sintetizada ($Hz$).
+* $v_0$: Velocidad nominal estándar de elocución ($\approx 150 \text{ WPM}$).
+* $\mu$: Constante de aceleración/desviación de frecuencia ($\mu = \ln(2)$).
+
+### Predicciones y Optimización
+
+* **Optimización de Inteligibilidad:** Valores de $p \in [0.8, 1.2]$ y $r \in [0.9, 1.1]$ maximizan el índice de inteligibilidad del habla según el estándar STI (*Speech Transmission Index*).
+* **Predicción de Duración de Sintetizado:** Para un texto de longitud $L$ caracteres y número estimado de palabras $N = \frac{L}{5}$, el tiempo estimado de ejecución en segundos $\hat{T}$ está dado por:
+  $$\hat{T}(r) = \frac{60 \cdot L}{5 \cdot v_0 \cdot r} = \frac{12 \cdot L}{v_0 \cdot r}$$
+
+
+ Instalación
+Requisitos Previos
+
+Entorno de Desarrollo: [MIT App Inventor 2](https://appinventor.mit.edu/) (Versión de servidor YaVersion 237 o superior).
+Sistema Operativo Objetivo: Android SDK 14 (Android 4.0 Ice Cream Sandwich) como mínimo, compatible con versiones recientes; iOS 12.0 o superior.
+Dispositivo de Prueba / Emulador: Dispositivo Android/iOS con la aplicación **MIT AI2 Companion** instalada o un emulador configurado.
+Servicios Integrados:
+   Servicio de Reconocimiento de Voz de Google (`Google Speech Recognition API`) habilitado en el dispositivo móvil.
+   Motor TTS de Android/iOS (`Text-To-Speech Engine`) activo.
+
+
+ Uso
+
+1. Iniciar Reconocimiento: Presiona el botón **Di algo**. El dispositivo abrirá la interfaz de escucha. Habla con claridad al micrófono.
+2. Revisión del Texto: Al finalizar la captura, la transcripción aparecerá automáticamente en el campo de texto central. También puedes editar manualmente el contenido.
+3. Ajuste de Parámetros:
+   Desliza Cambiar voz para subir o bajar el tono (*Pitch*).
+   Desliza Cambiar ritmo para acelerar o desacelerar la velocidad de reproducción.
+4. Reproducción Sintetizada: Toca el botón **Es cucha la palabras** para ejecutar la síntesis de voz con la configuración aplicada.
+
+
+Instalacion
+
+Requisitos Previos:
+- Dispositivo Android con version 5.0 o superior y camara funcional.
+- Archivos de activos multimedia incluidos en el proyecto (cat.jpeg y cat-89108.mp3).
+- Entorno de desarrollo MIT App Inventor 2.0+ (para importar y compilar el archivo .aia del proyecto).
+- Extension de Teachable Machine para MIT App Inventor (LookExtension) integrada.
