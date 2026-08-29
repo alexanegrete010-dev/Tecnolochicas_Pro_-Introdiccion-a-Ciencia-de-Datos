@@ -1,0 +1,72 @@
+# PROYECTOFINAL_TCPROG4_BIOCLIMA
+
+ Proyecto Final App
+
+Aplicacion movil para analisis, prediccion y limpieza de datos cineticos y climaticos
+
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+ Descripcion
+
+Proyecto Final es una aplicacion movil desarrollada en MIT App Inventor orientada al procesamiento, 
+analisis cinetico y visualizacion interactiva de series temporales de datos. La aplicacion permite 
+cargar datos experimentales y ambientales directamente desde Google Sheets (mediante integracion API
+con llaves de servicio en formato JSON), realizando tareas criticas como filtrado, limpieza automatica
+de anomalias, generacion de lineas de tendencia por regresion lineal y estimacion de predicciones 
+cineticas de datos futuros.
+
+
+
+ Caracteristicas
+
+Visualizacion y Analisis
+- Conexion e integracion en tiempo real con Google Sheets via API (Service Account JSON).
+- Navegacion multi-pantalla optimizada (Screen1, Screen_Linea_de_Tendencia, Screen_Predicciones_de_datos, Screen_limpiesa_de_datos).
+
+Graficos e Interfaz:
+- Variables vs Tiempo: Graficado dinamico de crecimiento o variacion temporal.
+- Ajuste de Tendencia: Construccion de modelos lineales y = mx + b.
+- Lienzo de Prediccion: Visualizacion avanzada de valores proyectados.
+- Limpieza de Datos: Identificacion y filtrado de datos nulos o fuera de rango.
+
+
+
+ Modelos Cineticos y Matematicos Implementados
+
+1. Modelo de Regresion Lineal (Linea de Tendencia)
+   y = m * x + b
+   - Calculo de la Pendiente (m): Determinacion de la tasa de cambio media de la variable respecto al tiempo.
+   - Intercepto (b): Valor inicial estimado en el origen (t = 0).
+
+2. Deteccion y Limpieza de Datos (Screen Limpieza)
+   - Filtrado de valores atipicos (outliers) y anomalias mediante umbrales estadisticos.
+   - Normalizacion de datos para la generacion de graficos limpios.
+
+3. Predicciones Matematicas de Datos
+   Y_estimado = f(X)
+   - Extrapolacion de puntos futuros a partir de los parametros ajustados de la serie temporal.
+   - Evaluacion de la variacion de tasa de incremento para estimaciones de productividad o comportamiento ambiental.
+
+
+ Instalacion
+
+Requisitos Previos:
+- Dispositivo Android con version 5.0 o superior.
+- Cuenta de Google con acceso a Google Sheets.
+- Archivo de credenciales de servicio proyecto-final-506622-0b38008be2db.json configurado.
+- Entorno de desarrollo MIT App Inventor 2.0+ (para modificaciones del codigo fuente .aia).
+
+
+ Estructura del Proyecto
+
+Proyecto_Final/
+|-- Screen1 (Pantalla principal e interfaz de menu)
+|-- Screen_Linea_de_Tendencia (Calculo de regresion lineal y m, b)
+|-- Screen_Predicciones_de_datos (Modelado de prediccion y proyeccion)
+|-- Screen_limpiesa_de_datos (Filtrado de anomalias y procesado de dataset)
+
+### Tecnologias Utilizadas
+- Plataforma: MIT App Inventor 2
+- Backend de Datos: Google Sheets API
+- Autenticacion: Service Account (OAuth2 JSON)
+- Lenguaje de Bloques: Kawa / App Inventor Component Architecture
