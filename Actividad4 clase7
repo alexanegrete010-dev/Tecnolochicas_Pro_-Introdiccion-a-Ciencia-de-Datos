@@ -1,0 +1,84 @@
+ A4_CLASE7_TCPROG4
+
+ Aplicación de Clasificación de Imágenes y Análisis de Datos
+
+Una aplicación móvil desarrollada en MIT App Inventor que integra visión por computadora mediante aprendizaje automático para la clasificación de imágenes en tiempo real y la evaluación de modelos predictivos cuantitativos.
+
+
+ Menú de Navegación Rápida
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+ Descripción
+
+El proyecto A4_CLASE7 es una solución móvil desarrollada en el entorno MIT App Inventor (paquete `ai_alexanegrete010.a4_clase7`). La aplicación
+integra componentes de visión por computadora basados en TensorFlow.js y la extensión `LookExtension` (`TeachableMachineImageClassifier`) para procesar el flujo de la 
+cámara en tiempo real en la pantalla principal (`Screen1`). Además de realizar la inferencia y clasificación visual de objetos, el sistema incorpora módulos de
+procesamiento numérico para evaluar modelos matemáticos de regresión y funciones dinámicas sobre conjuntos de datos experimentales.
+
+Los datos experimentales, modelos preentrenados, archivos multimedia y activos de código fuente incluidos en este repositorio son propiedad de sus respectivos autores y 
+desarrolladores. Queda prohibida la reproducción no autorizada o comercialización sin la debida atribución de derechos de autor.
+
+
+Características
+
+ Puntos clave y funcionalidades principales:
+Clasificación en Tiempo Real: Captura de flujo de video e inferencia dinámica mediante el modelo de Teachable Machine.
+Procesamiento Condicional de Eventos: Generación de alertas visuales y auditivas automáticas al detectar categorías específicas que superan el umbral de validación.
+Control de Dispositivos de Captura: Conmutación entre cámara frontal y posterior mediante funciones nativas del componente de extensión.
+
+ Vistas disponibles:
+Vista de Cámara en Vivo: Integración de interfaz mediante visor web (*WebViewer*) y la extensión de clasificación de imágenes.
+Panel de Inferencia y Resultados: Despliegue de etiquetas de clase identificadas y porcentaje/nivel de confianza asociado.
+Pantalla de Análisis y Modelado: Interfaz de entrada y procesamiento de parámetros cuantitativos para la evaluación de funciones de ajuste lineal y cinético.
+
+ Herramientas de análisis y procesamiento de datos:
+Filtrado de Umbrales de Confianza: Validación condicional del valor numérico de probabilidad para la activación de eventos ($C(x) \ge T_c$).
+Modelado de Regresión: Evaluación de ecuaciones lineales para la interpolación y extrapolación de datos cinéticos o experimentales.
+
+
+Modelos Cinéticos / Matemáticos Implementados
+
+1. Ecuación de Regresión Lineal:
+   $$y = m \cdot x + b$$
+   Donde $m$ representa la pendiente de la recta, $b$ la intersección con el eje $y$, $x$ la variable independiente experimental y $y$ el valor predicho.
+
+2. Distribución de Probabilidad Softmax (Inferencia de Clasificación):
+   $$\sigma(\mathbf{z})_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}$$
+   Donde $z_i$ representa la puntuación logit obtenida para la clase $i$ y $K$ es el número total de clases evaluadas por el modelo.
+
+3. Función de Activación Condicional por Umbral:
+   $$f(C) = \begin{cases} 1 & \text{si } C \ge T_c \\ 0 & \text{si } C < T_c \end{cases}$$
+   Donde $C$ es la confianza porcentual calculada y $T_c$ representa el umbral crítico definido para la toma de decisiones.
+
+ Desglose de variables y parámetros calculados:
+Pendiente ($m$): Representa la tasa de cambio o aceleración del parámetro analizado por unidad de tiempo/iteración.
+Intersección ($b$): Define el estado inicial o valor base del sistema en el instante $t = 0$.
+Umbral de Confianza ($T_c$): Límite escalar en el intervalo $[0, 1]$ o $[0\%, 100\%]$ empleado para filtrar falsos positivos en la clasificación visual.
+
+ Predicciones u optimización:
+El sistema permite evaluar la proyección de datos hacia iteraciones futuras mediante la extrapolación del modelo $y = m \cdot x + b$, permitiendo estimar el comportamiento de las variables experimentales en puntos no observados $x_{\text{pred}}$.
+
+
+ Instalación
+
+ Requisitos previos de software y servicios integrados:
+Dispositivo Android: Versión 5.0 (Lollipop) o superior, equipado con cámara funcional y aceleración gráfica.
+Entorno de Desarrollo: MIT App Inventor 2.0+ para la importación, modificación y compilación del archivo fuente `.aia`.
+Extensiones Integradas: Componente `LookExtension` (`br.ufsc.gqs.teachablemachineimageclassifier`) para la ejecución del motor de clasificación basado en TensorFlow.js.
+Archivos Multimedia e Identificadores: Recursos de audio e imagen integrados en la estructura de componentes del proyecto.
+
+ Pasos de compilación e instalación:
+1. Descargar o clonar el archivo de código fuente del proyecto (`.aia`).
+2. Acceder a la plataforma de [MIT App Inventor](http://ai2.appinventor.mit.edu/).
+3. Seleccionar **Projects > Import project (.aia) from my computer** y cargar el archivo.
+4. Generar el ejecutable compilado mediante la opción **Build > Android App (.apk)**.
+5. Transferir el archivo `.apk` al dispositivo móvil, autorizar la instalación desde fuentes conocidas y otorgar los permisos de cámara requeridos.
+
+
+Uso
+
+1. Ejecute la aplicación **A4_CLASE7** en el dispositivo móvil y acepte las solicitudes de permisos para el uso de la cámara.
+2. Apunte el lente del dispositivo hacia el objetivo que se desea clasificar.
+3. Observe en el panel inferior de la pantalla la etiqueta asignada y la probabilidad de confianza calculada por el modelo visual.
+4. En la sección analítica, ingrese los valores numéricos de prueba para calcular las predicciones correspondientes basadas en la función de regresión.
+
