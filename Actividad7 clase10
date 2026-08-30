@@ -1,0 +1,95 @@
+LESSON_4_PREDICTIONS_TEMPLATE_TCPROG4
+
+ Lección 4: Predicciones y Modelado Climático
+
+Aplicación móvil analítica para el procesamiento de datos climáticos, filtrado de anomalías, ajuste de regresión lineal y generación de predicciones térmicas automatizadas.
+
+
+ Menú de Navegación Rápida
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+
+ Descripción
+
+El proyecto **LESSON_4_PREDICTIONS_TEMPLATE** es una solución móvil desarrollada en MIT App Inventor (paquete 
+`ai_alexanegrete010.Lesson_4_Predictions_template`) enfocada en la ingesta, depuración y modelado predictivo de 
+series temporales climáticas. La aplicación integra conexiones seguras con APIs de Google Sheets a través de credenciales 
+de Service Accounts (`apiaplicaccion-99a7c488498a.json` y `app-inventor-366820-e535cfcf00f9.json`) para consultar datasets
+en la nube, filtrar valores espurios mediante reglas de validación y construir modelos de mínimos cuadrados ordinarios. A 
+través de su arquitectura multipantalla (`Screen1`, `cleanDataScreen`, `drawLOBFscreen` y `makePredictionsScreen`), permite 
+calcular la línea de mejor ajuste (*Line of Best Fit*) y evaluar puntos futuros en el dominio temporal para predecir tendencias
+térmicas con precisión.
+
+Los datos experimentales, modelos predictivos, archivos de credenciales API, recursos de interfaz gráfica y archivos de código fuente contenidos en este repositorio son propiedad de sus respectivos autores y desarrolladores[cite: 12]. Queda estrictamente prohibida su reproducción no autorizada o comercialización sin la debida atribución de derechos de autor.
+
+
+ Características
+
+Puntos clave y funcionalidades principales:
+Ingesta Remota de Datos:** Recuperación dinámica de listas numéricas de tiempo y temperatura desde hojas de cálculo en la nube vía Google Sheets API[cite: 12].
+Limpieza de Series Temporales:** Algoritmos automatizados para la identificación y eliminación de anomalías térmicas[cite: 12].
+Generación de Proyecciones:** Módulo dedicado para la evaluación de días futuros y extrapolación de temperaturas esperadas[cite: 12].
+
+Lista de gráficos interactivos o vistas disponibles:
+Pantalla Principal (`Screen1`): Menú interactivo de acceso a los módulos de análisis[cite: 12].
+Vista de Limpieza de Datos (`cleanDataScreen`): Interfaz para la depuración de datos atípicos y filtrado de registros[cite: 12].
+Vista de Línea de Mejor Ajuste (`drawLOBFscreen`): Renderizado cartesiano de la gráfica de dispersión y su recta de tendencia lineal[cite: 12].
+Vista de Predicciones (`makePredictionsScreen`): Interfaz de cálculo interactivo para predecir valores térmicos futuros[cite: 12].
+
+Herramientas de análisis o procesamiento de datos:
+Filtros de Control de Calidad:** Descarte sistemático de lecturas que exceden límites térmicos operacionales.
+Procesamiento de Regresión por Mínimos Cuadrados:** Algoritmo en bloque para la resolución continua de la pendiente ($m$) e intersección ($b$).
+
+
+Modelos Cinéticos / Matemáticos Implementados
+
+1. Modelo de Regresión Lineal Continuo:
+   $$y = m \cdot x + b$$
+   *Donde $y$ representa la temperatura proyectada (°C), $x$ el día del año o unidad temporal, $m$ la tasa de cambio térmico y $b$ la temperatura base estimada en $x=0$.*
+
+2. Cálculo de la Pendiente por Mínimos Cuadrados ($m$):
+   $$m = \frac{n \sum (x_i y_i) - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}$$
+   *Donde $n$ es la cantidad total de lecturas válidas, $x_i$ es la variable temporal e $y_i$ corresponde a la temperatura registrada.*
+
+3. Cálculo de la Intersección al Origen ($b$):
+   $$b = \frac{\sum y_i - m \sum x_i}{n}$$
+
+4. Ecuación Predictiva Extrapolada:
+   $$\hat{y}(x_{\text{obj}}) = m \cdot x_{\text{obj}} + b$$
+   Donde $\hat{y}$ es la temperatura esperada para un día objetivo especifico $x_{\text{obj}}$.
+
+Desglose de variables y parámetros calculados:
+Pendiente ($m$):** Gradiente térmico muestral que representa la aceleración o decremento de la temperatura (°C/día).
+Intersección ($b$):** Coeficiente de ajuste constante que sitúa la recta en el plano cartesiano.
+Día Objetivo ($x_{\text{obj}}$):** Variable de entrada para extrapolar el comportamiento del sistema (ej. $x = 350$).
+
+Sección de predicciones u optimización:
+El sistema procesa el dataset libre de anomalías en `cleanDataScreen` y calcula los parámetros $m$ y $b$ en `drawLOBFscreen`[cite: 12].
+Posteriormente, en la pantalla `makePredictionsScreen`, el usuario introduce cualquier valor temporal dentro o fuera del rango observado 
+para evaluar $\hat{y}(x_{\text{obj}})$, optimizando el análisis climático y facilitando la toma de decisiones basada en datos históricos depurados[cite: 12].
+
+
+Instalación
+
+Requisitos Previos:
+ Dispositivo Android con versión 5.0 o superior y cámara funcional[cite: 12].
+ Archivos de activos multimedia incluidos en el proyecto (`cat.jpeg` y `cat-89108.mp3`)[cite: 12].
+ Entorno de desarrollo MIT App Inventor 2.0+ (para importar y compilar el archivo `.aia` del proyecto)[cite: 12].
+ Extensión de Teachable Machine para MIT App Inventor (`LookExtension`) integrada[cite: 12].
+
+Pasos de compilación e instalación:
+1. Descargar el archivo de código fuente del proyecto (`.aia`)[cite: 12].
+2. Acceder al entorno web de [MIT App Inventor 2](http://ai2.appinventor.mit.edu/).
+3. Cargar el archivo seleccionando **Projects > Import project (.aia) from my computer**[cite: 12].
+4. Verificar la presencia de las llaves JSON de autenticación (`apiaplicaccion-99a7c488498a.json` y `app-inventor-366820-e535cfcf00f9.json`) en el panel de Medios/Assets[cite: 12].
+5. Generar el ejecutable navegando a **Build > Android App (.apk)**[cite: 12].
+6. Descargar e instalar el paquete `.apk` resultante en el dispositivo Android[cite: 12].
+
+
+Uso
+
+1. Inicie la aplicación en su dispositivo Android[cite: 12].
+2. Acceda a la opción de limpieza de datos desde `Screen1` para filtrar errores o ruido numérico del dataset[cite: 12].
+3. Diríjase al módulo `drawLOBFscreen` para generar la gráfica de dispersión y visualizar la línea de mejor ajuste[cite: 12].
+4. Navegue a la pantalla `makePredictionsScreen` e ingrese el día proyectado para obtener de forma automática el cálculo de temperatura estimada[cite: 12].
+
