@@ -1,0 +1,83 @@
+# T3_CLASE5_TCPROG4
+
+Aplicación de Clasificación de Imágenes mediante Teachable Machine
+
+Una aplicación móvil desarrollada en MIT App Inventor que integra visión por computadora y aprendizaje automático para la clasificación de imágenes en tiempo real.
+
+ Menú de Navegación Rápida
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+ Descripción
+
+La aplicación T3_CLASE5 es una solución móvil desarrollada dentro del entorno MIT App Inventor que integra modelos de visión por computadora basados en TensorFlow.js
+y la extensión `LookExtension` (`br.ufsc.gqs.teachablemachineimageclassifier`). El sistema captura el flujo de video en tiempo real desde la cámara del dispositivo móvi
+l para realizar inferencias de clasificación de imágenes, procesando las probabilidades de reconocimiento en la vista de usuario (`Screen1`) y disparando eventos 
+multimedia dinámicos e indicadores analíticos al validar la presencia de un objetivo específico.
+
+
+Características
+
+Clasificación de Imágenes en Tiempo Real: Interfaz integrada con el feed de la cámara para realizar inferencias instantáneas mediante modelos de aprendizaje automático.
+Procesamiento y Selección de Cámara: Selección y conmutación entre la cámara frontal y posterior mediante el componente de extensión.
+Feedback Multimedia Eventual: Reproducción automática de alertas audibles (`cat-89108.mp3`) e imágenes de apoyo (`cat.jpeg`) al detectar la categoría objetivo.
+Vistas Disponibles:
+   Vista principal (`Screen1`) con visor de cámara (WebViewer / TeachableMachineImageClassifier).
+   Panel de etiquetas de resultado y barra de confianza/porcentaje de inferencia.
+   Botones de acción para el control de captura y reproducción de audio.
+Herramientas de Análisis y Procesamiento de Datos:
+   Evaluación continua de umbrales de confianza numéricos ($C_t \ge \text{umbral}$).
+   Filtrado condicional de cadenas para la extracción de etiquetas de clasificación válidas.
+
+
+ Modelos Cinéticos / Matemáticos Implementados
+
+Para la evaluación del desempeño de clasificación, el análisis cuantitativo de las métricas de inferencia y la proyección de confianza del modelo, se aplican los siguientes
+modelos matemáticos y funciones de evaluación:
+
+1. Función Softmax para Distribución de Probabilidades:
+   $$\sigma(\mathbf{z})_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}$$
+   Donde $z_i$ representa la puntuación asignada por la red a la clase $i$, y $K$ es el número total de clases evaluadas por el clasificador.
+
+2. Evaluación de Umbral Condicional de Inferencia:
+   $$I(x) = \begin{cases} 1 & \text{si } C(x) \ge T_c \\ 0 & \text{si } C(x) < T_c \end{cases}$$
+   Donde $C(x)$ es la confianza calculada para la entrada $x$, y $T_c$ es el umbral de activación (threshold).
+
+3. Ecuación de Ajuste Lineal para Tendencias de Inferencia:
+   $$y = m \cdot x + b$$
+   Donde $m$ representa la tasa de variación en las puntuaciones de inferencia, $b$ la condición inicial, $x$ el índice de iteración de análisis y 
+$y$ el porcentaje de confianza predicho.
+
+ Desglose de Variables y Parámetros Calculados:
+Pendiente ($m$):** Tasa de variación de la confianza en función del número de iteraciones de la cámara.
+Intersección ($b$):** Nivel base de ruido o confianza inicial del sistema antes de la convergencia de la imagen.
+Umbral de Confianza ($T_c$):** Valor escalar evaluado en el rango $[0, 1]$ (o $0\% - 100\%$) para la activación de eventos o alertas.
+
+ Predicciones u Optimización:
+El modelo matemático permite evaluar la aceleración de convergencia de la clasificación, identificando la cantidad de cuadros (*frames*) requeridos $x$ para que 
+la confianza $y$ supere el umbral $T_c$ minimizando los falsos positivos durante la captura activa.
+
+
+Instalación
+
+ Requisitos Previos:
+ Dispositivo Android con versión 5.0 (Lollipop) o superior y cámara funcional. Archivos de activos multimedia incluidos en el proyecto (`cat.jpeg` y `cat-89108.mp3`).
+ Entorno de desarrollo MIT App Inventor 2.0+ (para importar y compilar el archivo `.aia` del proyecto).
+ Extensión de Teachable Machine para MIT App Inventor (`LookExtension` / `br.ufsc.gqs.teachablemachineimageclassifier`) integrada.
+
+ Pasos de Instalación y Compilación:
+1. Clonar este repositorio o descargar el archivo `.aia` del proyecto.
+2. Acceder al entorno de [MIT App Inventor](http://ai2.appinventor.mit.edu/).
+3. Ir a Projects > Import project (.aia) from my computer y cargar el archivo correspondiente.
+4. Verificar en el panel de componentes que los activos `cat.jpeg`, `cat-89108.mp3` y la extensión `TeachableMachineImageClassifier` estén vinculados.
+5. Seleccionar Build > Android App (.apk) para generar el ejecutable de Android.
+6. Transferir e instalar el paquete `.apk` en el dispositivo móvil y otorgar los permisos de cámara requeridos.
+
+
+Uso
+
+1. Inicie la aplicación en el dispositivo Android y otorgue los permisos de acceso a la cámara.
+2. Apunte la cámara hacia el objeto que se desea clasificar.
+3. Observe en la pantalla (`Screen1`) la etiqueta asignada y la probabilidad porcentual calculada por la extensión de Teachable Machine.
+4. Al reconocer la categoría configurada superando el umbral de confianza, la aplicación reproducirá el sonido de confirmación (`cat-89108.mp3`) y desplegará la imagen de referencia.
+
+    └── remix_history              # Historial de versiones del proyecto
