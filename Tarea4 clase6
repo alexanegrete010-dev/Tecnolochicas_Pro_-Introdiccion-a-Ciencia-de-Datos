@@ -1,0 +1,86 @@
+# T4_CLASE6_TCPROG4_TCPROG4
+
+MoodTracker template
+
+Una aplicación móvil desarrollada en MIT App Inventor para el registro, seguimiento y análisis de estados de ánimo mediante interfaces interactivas de usuario.
+
+
+ Menú de Navegación Rápida
+Descripción • Características • Instalación • Uso • Modelos Cinéticos / Matemáticos Implementados • Estructura • Tecnologías
+
+
+Descripción
+
+El proyecto **T4_CLASE6_MOODTRACKER_TECNOLOCHICAS** es una solución móvil desarrollada en el entorno MIT App Inventor 
+(paquete `ai_alexanegrete010.t4_clase6_MoodTracker_template_copiar`)[cite: 8]. La aplicación permite la recolección continuada de datos cuantitativos 
+y cualitativos sobre el estado emocional del usuario a lo largo del tiempo, almacenando registros de frecuencia, intensidad y categorías afectivas
+[cite: 8]. Utiliza componentes de almacenamiento local y lógica de bloques para calcular tendencias emocionales mediante funciones estadísticas básicas,
+modelos de regresión y promedios ponderados[cite: 8].
+
+Los datos experimentales, modelos cuantitativos, archivos de interfaz y activos de código fuente incluidos en este repositorio son propiedad de sus
+respectivos autores y desarrolladores. Queda prohibida la reproducción no autorizada o comercialización sin la debida atribución de derechos de autor.
+
+ Características
+
+Puntos clave y funcionalidades principales:
+Registro Interactivo: Captura de estados de ánimo mediante entradas de usuario parametrizadas en la interfaz móvil[cite: 8].
+Persistencia de Datos: Almacenamiento local de respuestas e historial de registros diarios[cite: 8].
+Evaluación de Tendencias: Procesamiento de frecuencias emocionales para categorizar la estabilidad afectiva[cite: 8].
+
+Lista de gráficos interactivos o vistas disponibles:
+Pantalla Principal (`Screen1`): Interfaz para selección de estados de ánimo, ingreso de notas y consulta de métricas agrupadas[cite: 8].
+Panel de Resumen Estadístico: Vista de promedios e indicadores cuantitativos de los registros acumulados[cite: 8].
+
+Herramientas de análisis o procesamiento de datos:
+Detección de Anomalías: Identificación de desviaciones significativas en la puntuación promedio respecto al histórico base.
+Filtrado Condicional: Clasificación de registros según umbrales predefinidos de intensidad emocional.
+
+
+Modelos Cinéticos / Matemáticos Implementados
+
+1. Promedio Ponderado de Estado de Ánimo:
+   $$\bar{E} = \frac{\sum_{i=1}^{n} (w_i \cdot x_i)}{\sum_{i=1}^{n} w_i}$$
+   Donde $x_i$ representa el valor numérico asignado al estado de ánimo $i$, $w_i$ el peso temporal o de frecuencia, y $n$ el número total de registros.
+
+2. Ecuación de Regresión Lineal de Tendencia Emocional:
+   $$y = m \cdot x + b$$
+   Donde $m$ representa la pendiente (tasa de cambio emocional en el tiempo), $b$ la condición inicial en el eje $y$, $x$ el intervalo de tiempo/registro 
+y $y$ el estado de ánimo estimado.
+
+3. Índice de Variabilidad Emocional (Desviación Estándar):
+   $$\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n}}$$
+   Donde $x_i$ indica la valoración individual, $\bar{x}$ la media aritmética de la muestra y $n$ la cantidad de observaciones.
+
+Desglose de variables y parámetros calculados:
+Pendiente ($m$):** Mide la dirección de la tendencia (valor positivo indica mejora del estado de ánimo; negativo indica declive).
+Intersección ($b$):** Representa la condición afectiva base evaluada al inicio del período de seguimiento ($t = 0$).
+Desviación ($\sigma$):** Cuantifica la dispersión o estabilidad emocional del usuario en un rango determinado.
+
+Sección de predicciones u optimización:
+Mediante la función de ajuste lineal $y = m \cdot x + b$, la aplicación permite calcular proyecciones cuantitativas del estado de ánimo 
+futuro en el día $x_{\text{pred}}$, facilitando la detección temprana de periodos prolongados de baja puntuación.
+
+
+ Instalación
+
+Requisitos previos de software o servicios integrados:**
+Dispositivo Android con versión 5.0 (Lollipop) o superior[cite: 8].
+Entorno de desarrollo MIT App Inventor 2.0+ para la importación y compilación del código fuente `.aia`[cite: 8].
+Permisos de almacenamiento local activos en el dispositivo móvil[cite: 8].
+
+Pasos de compilación e instalación:
+1. Descargar o clonar el archivo fuente `.aia` del proyecto[cite: 8].
+2. Acceder al portal de MIT App Inventor[cite: 8].
+3. Importar el proyecto desde la barra superior mediante **Projects > Import project (.aia) from my computer**[cite: 8].
+4. Generar el paquete binario seleccionando **Build > Android App (.apk)**[cite: 8].
+5. Instalar el paquete `.apk` en el dispositivo móvil[cite: 8].
+
+
+Uso
+
+1. Abra la aplicación T4_CLASE6_MOODTRACKER_TECNOLOCHICA_TCPROG4 en el dispositivo[cite: 8].
+2. Seleccione la categoría o nivel correspondiente al estado de ánimo actual en la interfaz de `Screen1`[cite: 8].
+3. Guarde la entrada para almacenar los datos en el registro interno[cite: 8].
+4. Consulte las vistas de resumen para visualizar promedios y métricas calculadas[cite: 8].
+
+    └── remix_history              # Registro de versiones del proyecto[cite: 8]
