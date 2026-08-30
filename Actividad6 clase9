@@ -1,0 +1,98 @@
+ LESSONS_2_AND_3_MODELING_AND_CLEANING_CLIMATE_DATA_TEMPLATE_TCPROG4
+
+Modelado y Limpieza de Datos Climáticos
+
+Aplicación móvil desarrollada en MIT App Inventor para el procesamiento, depuración de anomalías y modelado estadístico de
+series temporales de datos climáticos mediante regresión lineal e integración con Google Sheets.
+
+
+ Menú de Navegación Rápida
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+
+ Descripción
+
+El proyecto LESSONS_2_AND_3_MODELING_AND_CLEANING_CLIMATE_DATA_TEMPLATE es una plataforma móvil orientada al procesamiento analítico y visualización
+de series de tiempo meteorológicas, desarrollada en el entorno MIT App Inventor (paquete `ai_alexanegrete010.Lessons_2_and_3_Modeling_and_Cleaning_Climate_Data_template`)
+[cite: 11]. La aplicación permite conectar de forma remota repositorios de datos alojados en Google Sheets utilizando autenticación por Service Account 
+(`apiaplicaccion-99a7c488498a.json` y `app-inventor-366820-e535cfcf00f9.json`) para realizar la detección y depuración de valores atípicos (anomalías térmicas)
+[cite: 11]. Asimismo, implementa algoritmos para el ajuste de la Línea de Mejor Ajuste (*Line of Best Fit*) a fin de caracterizar y predecir tendencias de temperatura
+en función del tiempo[cite: 11].
+
+Los datos experimentales, modelos predictivos, archivos de credenciales API, elementos gráficos de la interfaz y el código fuente contenidos en este repositorio son propiedad 
+de sus respectivos autores y desarrolladores[cite: 11]. Queda prohibida su reproducción no autorizada o explotación comercial sin la debida atribución de derechos de autor.
+
+
+ Características
+
+Puntos clave y funcionalidades principales:
+Conexión a Datasets Remotos: Integración mediante API con Google Sheets para el consumo dinámico de registros climáticos temporales[cite: 11].
+Depuración de Datos en Tiempo Real: Algoritmos para identificar y filtrar registros anómalos o fuera de rango[cite: 11].
+Ajuste Estadístico Continuo: Generación automatizada de líneas de tendencia lineal para proyecciones climáticas[cite: 11].
+
+Lista de gráficos interactivos o vistas disponibles:
+Panel Principal (`Screen1`): Menú de navegación central para la selección de flujos de análisis[cite: 11].
+Módulo de Limpieza de Datos (`cleanDataScreen`): Vista interactiva para la inspección y filtrado de anomalías dentro de los conjuntos de datos recopilados[cite: 11].
+Módulo de Modelado y Tendencia (`drawLOBFscreen`): Gráfico de dispersión con renderizado del modelo de Línea de Mejor Ajuste (*Line of Best Fit*)[cite: 11].
+
+Herramientas de análisis o procesamiento de datos:
+Filtros de Detección de Anomalías: Aplicación de reglas condicionales para descartar temperaturas fuera de límites físicamente válidos o con desvíos atípicos[cite: 11].
+Intercalación y Sincronización: Procesamiento de listas numéricas pareadas $(x_i, y_i)$ para evaluar tendencias térmicas continuas.
+
+
+Modelos Cinéticos / Matemáticos Implementados
+
+1. Modelo de Regresión Lineal Continuo (Línea de Mejor Ajuste):
+   $$y = m \cdot x + b$$
+   Donde $y$ representa la temperatura estimada (°C), $m$ la pendiente de variación térmica respecto al 
+tiempo, $x$ el día o instante temporal, y $b$ la temperatura base inicial.*
+
+2. Ecuación Muestral para la Pendiente ($m$):
+   $$m = \frac{n \sum (x_i y_i) - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}$$
+   Donde $n$ es la cantidad de muestras climáticas válidas tras el proceso de limpieza, $x_i$ representa la variable independiente (días/tiempo)
+y $y_i$ los valores de temperatura observados.
+
+3. Intersección al Origen ($b$):
+   $$b = \frac{\sum y_i - m \sum x_i}{n}$$
+
+4. Regla de Filtrado de Anomalías:
+   $$x_{\text{válido}} \iff T_{\text{mín}} \le y_i \le T_{\text{máx}}$$
+   *Donde $T_{\text{mín}}$ y $T_{\text{máx}}$ son umbrales estipulados para aislar erratas o lecturas espurias en la captura de datos.*
+
+Desglose de variables y parámetros calculados:
+Pendiente ($m$): Tasa de cambio de temperatura por unidad de tiempo (°C/día).
+Intersección ($b$): Estimación de la condición térmica inicial evaluada en $t = 0$.
+Temperatura Predicha ($y_{\text{pred}}$): Valor proyectado obtenido al evaluar el modelo ajustado en un día objetivo especifico (ej. $x = 350$).
+
+Sección de predicciones u optimización:
+Una vez depurados los datos en `cleanDataScreen`, el módulo `drawLOBFscreen` ajusta los coeficientes $m$ y $b$ sobre la serie depurada[cite: 11]. Evaluando $x = 350$ sobre la recta ajustada $y_{\text{pred}} = m \cdot (350) + b$, el algoritmo extrapola la proyección térmica futura minimizando el impacto de los sesgos provocados por anomalías meteorológicas[cite: 11].
+
+
+ Instalación
+
+Instalación
+
+Requisitos Previos:
+ Dispositivo Android con versión 5.0 o superior y cámara funcional[cite: 11].
+ Archivos de activos multimedia incluidos en el proyecto (`cat.jpeg` y `cat-89108.mp3`)[cite: 11].
+ Entorno de desarrollo MIT App Inventor 2.0+ (para importar y compilar el archivo `.aia` del proyecto)[cite: 11].
+ Extensión de Teachable Machine para MIT App Inventor (`LookExtension`) integrada[cite: 11].
+
+Pasos de compilación e instalación:
+1. Clonar este repositorio o descargar el archivo fuente `.aia` del proyecto[cite: 11].
+2. Acceder a la plataforma [MIT App Inventor 2](http://ai2.appinventor.mit.edu/).
+3. Importar el proyecto dirigiéndose a **Projects > Import project (.aia) from my computer**[cite: 11].
+4. Verificar la inclusión de los archivos de credenciales JSON (`apiaplicaccion-99a7c488498a.json` y `app-inventor-366820-e535cfcf00f9.json`) en la sección de activos (*Assets*)[cite: 11].
+5. Compilar el paquete instalador seleccionando **Build > Android App (.apk)**[cite: 11].
+6. Descargar el archivo `.apk` e instalarlo en el dispositivo móvil Android[cite: 11].
+
+
+Uso
+
+1. Abra la aplicación en el dispositivo móvil Android[cite: 11].
+2. Desde la pantalla principal (`Screen1`), seleccione el módulo **Limpieza de Datos** (`cleanDataScreen`)[cite: 11].
+3. Ejecute la carga de la serie temporal desde Google Sheets para filtrar automáticamente las anomalías térmicas[cite: 11].
+4. Navegue al módulo **Línea de Mejor Ajuste** (`drawLOBFscreen`) para visualizar la gráfica de dispersión depurada y la recta de regresión generada[cite: 11].
+5. Consulte las variables calculadas ($m$, $b$) y la predicción de temperatura proyectada para días posteriores[cite: 11].
+
+    └── remix_history                                          # Historial de versiones y modificaciones[cite: 11]
