@@ -1,0 +1,81 @@
+# A3_CLASE5_T_TCPROG4
+
+ Aplicación de Clasificación de Imágenes y Análisis de Datos
+
+Una aplicación móvil desarrollada en MIT App Inventor que integra visión por computadora mediante aprendizaje automático (Teachable Machine) para la clasificación de imágenes en tiempo real y la predicción/análisis de datos en pantallas dedicadas.
+
+
+ Menú de Navegación Rápida
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+
+ Descripción
+
+El proyecto A3_CLASE5_TEACHABLEMACHINE es una solución móvil multiplataforma desarrollada en el entorno MIT App Inventor. La aplicación está dividida en módulos de trabajo distribuidos en múltiples pantallas (`Screen1` y `Screen2`). Integra modelos de visión por computadora basados en TensorFlow.js y la extensión `LookExtension` (Teachable Machine) para procesar capturas de cámara en tiempo real y realizar inferencias de clasificación de imágenes. Adicionalmente, incluye capacidades de inferencia analítica y modelado cuantitativo mediante análisis de regresión para la estimación de variables dinámicas a partir de entradas experimentales.
+
+> Aviso Legal y Propiedad Intelectual: Los datos experimentales, modelos preentrenados, archivos multimedia y activos de código incluidos en este repositorio son propiedad de sus respectivos autores y desarrolladores. Queda prohibida la reproducción no autorizada o comercialización sin la debida atribución de derechos de autor.
+
+ Características
+
+Clasificación en Tiempo Real: Interfaz integrada con el feed de la cámara del dispositivo móvil para clasificar imágenes mediante el modelo de Teachable Machine.
+Vistas Dinámicas y Navegación: Navegación fluida entre pantallas (`Screen1` para inferencia visual y `Screen2` para análisis cuantitativo/predicciones).
+Feedback Multimedia: Notificaciones visuales e interacción de audio basadas en eventos de clasificación exitosa.
+Vistas e Interfaz de Usuario:
+   Vista de cámara en vivo (WebViewer / LookExtension).
+   Vistas de resultados con porcentajes de confianza e etiquetas de clase.
+   Interfaz de entrada para parámetros cuantitativos y cálculo de modelos cinéticos/matemáticos.
+Herramientas de Procesamiento de Datos:
+   Filtrado y evaluación de umbrales de confianza para etiquetas de clasificación.
+   Evaluación de ecuaciones de regresión lineal para extrapolación de datos.
+
+ Modelos Cinéticos / Matemáticos Implementados
+
+La aplicación implementa modelos matemáticos de regresión y funciones de ajuste lineal para la evaluación de parámetros experimentales y la predicción devariables en la interfaz analítica:
+
+1. Ecuación de la Recta / Regresión Lineal:
+   y = m \cdot x + b
+   Donde m representa la pendiente (tasa de cambio), $b$ la intersección en el eje y, x la variable independiente (ej. tiempo o iteración) y y el valor predicho.
+
+2. Transformación Logarítmica Cinética:
+   ln(X) = \ln(X_0) + mu cdot t
+   Donde X es la concentración/cantidad final, X_0 el valor inicial, mu la tasa específica y t el tiempo.
+
+3. Coeficiente de Determinación y Correlación:
+   $$R = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2}}$$
+
+Desglose de Variables y Parámetros Calculados:
+Pendiente ($m$): Determina la velocidad de ajuste o la tasa de crecimiento/decrecimiento de los datos recopilados.
+Intersección ($b$): Define la condición inicial del sistema en $t = 0$.
+Umbral de Confianza ($C_t$): Valor evaluado en el rango $[0, 1]$ o $[0\%, 100\%]$ para determinar la validez de la clasificación de imagen.
+
+ Predicciones u Optimización:
+El sistema permite ingresar valores futuros para la variable independiente $x$ (ej. $x = 350$) para extrapolar automáticamente el resultado esperado $y$ utilizando los coeficientes derivados del modelo matricial.
+
+
+ Instalación
+
+ Requisitos Previos:
+ Dispositivo Android con versión 5.0 (Lollipop) o superior y cámara posterior/frontal funcional.
+ Archivos de activos multimedia incluidos en el proyecto (`cat.jpeg` y `cat-89108.mp3`).
+ Entorno de desarrollo MIT App Inventor 2.0+ (para importar y compilar el archivo `.aia` del proyecto).
+ Extensión de Teachable Machine para MIT App Inventor (`LookExtension` / `br.ufsc.gqs.teachablemachineimageclassifier`) integrada.
+
+ Pasos de Instalación y Compilación:
+1. Clonar este repositorio o descargar el archivo de código fuente `.aia`.
+2. Ingresar a [MIT App Inventor](http://ai2.appinventor.mit.edu/).
+3. Seleccionar Projects > Import project (.aia) from my computer** y cargar el archivo del proyecto.
+4. Asegurarse de que los activos multimedia (`cat.jpeg`, `cat-89108.mp3`) y la extensión `br.ufsc.gqs.teachablemachineimageclassifier` se muestren en la barra de componentes del proyecto.
+5. Hacer clic en Build > Android App (.apk)** para generar el instalador compilado para Android.
+6. Instalar el paquete `.apk` generado en el dispositivo móvil y otorgar los permisos requeridos de cámara y almacenamiento.
+
+ Uso
+
+1.Pantalla Principal (`Screen1`):
+   Abra la aplicación y conceda los permisos de cámara.
+   Apunte la cámara hacia el objeto deseado.
+   La aplicación mostrará en pantalla la etiqueta detectada y el nivel de confianza asociado. Al superar el umbral de reconocimiento, la app reproducirá el archivo de confirmación de audio (`cat-89108.mp3`).
+2.Pantalla Analítica (`Screen2`):
+   Presione el botón de navegación para cambiar a la vista de modelos matemáticos.
+   Ingrese los valores numéricos correspondientes a las variables del sistema ($x$).
+   Presione Calcular para obtener la predicción evaluada por la ecuación matemática implementada.
+
