@@ -1,0 +1,83 @@
+TAREA5_CLASE8_TCPROG4
+ DIY Book Club Starter
+
+Una aplicación móvil interactiva desarrollada en MIT App Inventor para la recomendación, gestión y seguimiento personalizado de lecturas de club de libros.
+
+
+ Menú de Navegación Rápida
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+
+ Descripción
+
+El proyecto DIYBOOKCLUB_STARTER es una solución móvil desarrollada en el entorno MIT App Inventor (paquete `ai_alexanegrete010.t5_clase8_DIYBookClub_Starter`). 
+La aplicación permite la gestión de catálogos literarios, el seguimiento de avances de lectura y la interacción fluida del usuario a través de una interfaz de usuario
+optimizada para dispositivos móviles. Incorpora almacenamiento local de preferencias, lógica de selección por bloques y procesamiento de activos multimedia e
+identificadores visuales personalizados (`DIYBookClubIcon.png`).
+
+Los datos experimentales, algoritmos de selección, archivos de medios, elementos gráficos de interfaz y archivos de código fuente incluidos en este repositorio son
+propiedad de sus respectivos autores y desarrolladores. Queda prohibida la reproducción no autorizada o comercialización sin la debida atribución de derechos de autor.
+
+
+ Características
+
+Puntos clave y funcionalidades principales:
+Gestión de Lecturas: Registro y visualización del catálogo de libros recomendados para el club.
+Interfaz Dinámica e Intuitiva: Sistema de navegación multipantalla mediante lógica por bloques en `Screen1`.
+Procesamiento de Activos Visuales: Integración de componentes de imagen para visualización de portadas y recursos de identidad del proyecto.
+
+Lista de gráficos interactivos o vistas disponibles:
+Vista Principal (`Screen1`): Panel interactivo de bienvenida y exploración de títulos disponibles.
+Vista de Detalle y Seguimiento: Módulo para la consulta de información específica de cada obra.
+
+Herramientas de análisis o procesamiento de datos:**
+Filtrado de Catálogo: Reglas lógicas aplicadas para categorizar títulos por género o estado de lectura.
+Evaluación de Progreso: Detección de avance en las lecturas y cálculo de métricas de cumplimiento.
+
+
+ Modelos Cinéticos / Matemáticos Implementados
+
+1. Modelo de Progresión Porcentual de Lectura:
+   $$P = \left( \frac{p_a}{p_t} \right) \cdot 100$$
+   *Donde $P$ representa el porcentaje alcanzado, $p_a$ las páginas leídas acumuladas y $p_t$ el total de páginas del libro.
+
+2. Índice de Velocidad de Lectura Promedio:
+   $$v_l = \frac{\Delta p}{\Delta t}$$
+   *Donde $v_l$ es la velocidad media de lectura (páginas/día), $\Delta p$ el número de páginas completadas en un intervalo y $\Delta t$ el tiempo transcurrido.
+
+Desglose de variables y parámetros calculados:
+Páginas Acumuladas ($p_a$): Cantidad de páginas leídas por el usuario a una fecha determinada.
+Velocidad ($v_l$): Tasa de avance diario proyectada para la estimación de finalización.
+Tiempo Estimado de Conclusión ($t_{est}$): Extrapolación del tiempo restante requerido para completar la obra.
+
+Sección de predicciones u optimización:
+La aplicación evalúa la tasa de lectura diaria $v_l$ para proyectar la fecha estimada de finalización de un libro mediante la función $t_{est} = \frac{p_t - p_a}{v_l}$, 
+permitiendo al usuario planificar su participación en las sesiones del club.
+
+
+ Instalación
+
+Instalación
+
+Requisitos Previos:
+ Dispositivo Android con versión 5.0 o superior y cámara funcional.
+ Archivos de activos multimedia incluidos en el proyecto (`cat.jpeg` y `cat-89108.mp3`).
+ Entorno de desarrollo MIT App Inventor 2.0+ (para importar y compilar el archivo `.aia` del proyecto).
+ Extensión de Teachable Machine para MIT App Inventor (`LookExtension`) integrada.
+
+Pasos de compilación e instalación:
+1. Clonar este repositorio o descargar el archivo `.aia` del proyecto (`t5_clase8_DIYBookClub_Starter.aia`).
+2. Acceder al servidor de [MIT App Inventor 2](http://ai2.appinventor.mit.edu/).
+3. Cargar el proyecto seleccionando **Projects > Import project (.aia) from my computer**.
+4. Confirmar la carga de los activos de medios en el panel lateral de componentes.
+5. Generar el paquete de instalación navegando a **Build > Android App (.apk)**.
+6. Descargar el archivo `.apk` e instalarlo en el dispositivo Android habilitando orígenes desconocidos.
+
+
+ Uso
+
+1. Abra la aplicación DIYBOOKCLUB_STARTER en el dispositivo móvil Android.
+2. Explore la lista de obras del club de lectura desde la vista principal (`Screen1`).
+3. Seleccione un libro para actualizar su estado de lectura o consultar los detalles.
+4. Registre el avance de páginas para actualizar los cálculos de velocidad y tiempo estimado de conclusión.
+
