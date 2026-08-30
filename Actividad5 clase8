@@ -1,0 +1,87 @@
+# A5_CLASE8_TCPROG4
+
+ Aplicación de Visualización de Datos Climáticos y Análisis de Regresión Lineal
+
+Una aplicación móvil desarrollada en MIT App Inventor para la visualización gráfica de series temporales climáticas, modelado estadístico y predicción de temperatura a través de integración con Google Sheets y APIs.
+
+
+Menú de Navegación Rápida
+Descripción • Características • Instalación • Uso • Modelos • Estructura • Tecnologías
+
+
+ Descripción
+
+El proyecto # A5_CLASE8_TCPROG4 es una solución móvil desarrollada en el entorno MIT App Inventor (paquete `ai_alexanegrete010.a5_clase8_Lesson_1_Visualizing_Climate_Data_template`).
+La aplicación permite la ingesta, graficación y evaluación analítica de variables térmicas climáticas capturadas en series de tiempo[cite: 9]. Integra comunicación con credenciales 
+JSON de API de Google (Google Sheets / Service Account) para la sincronización remota de datos, despliegue gráfico interactivo en múltiples pantallas (`Screen1`, `singleCaseScreen`,
+`Multicacescim`) y ajuste de modelos numéricos para extrapolar valores térmicos dinámicos[cite: 9].
+
+Los datos experimentales, modelos predictivos, archivos de credenciales API, imágenes de interfaz y archivos de código fuente incluidos en este repositorio son propiedad 
+de sus respectivos autores y desarrolladores. Queda prohibida la reproducción no autorizada o comercialización sin la debida atribución de derechos de autor.
+
+
+ Características
+
+Puntos clave y funcionalidades principales:
+Visualización Dinámica de Clima: Renderizado interactivo de curvas de temperatura frente al tiempo mediante componentes de gráficos[cite: 9].
+Integración API Google Sheets: Consumo automático de repositorios de datos climáticos tabulados utilizando autenticación basada en archivos de 
+clave de servicio JSON (`apiaplicaccion-99a7c488498a.json`, `app-inventor-366820-e535cfcf00f9.json`)[cite: 9].
+Arquitectura Multipantalla: Navegación por módulos dedicados para análisis individual de casos (`singleCaseScreen`) y comparación de escenarios
+múltiples (`Multicacescim`)[cite: 9].
+
+Lista de gráficos interactivos o vistas disponibles:
+Pantalla de Inicio (`Screen1`): Panel principal de navegación y selección de conjuntos de datos[cite: 9].
+Vista de Análisis de Caso Único (`singleCaseScreen`): Gráfico de dispersión y recta de tendencia para el estudio puntual de series térmicas[cite: 9].
+Vista de Escenarios Múltiples (`Multicacescim`): Panel comparativo para superposición de series climáticas temporales[cite: 9].
+
+Herramientas de análisis o procesamiento de datos:
+Modelado por Regresión: Cálculo de parámetros numéricos $m$ y $b$ para proyecciones continuas.
+Extrapolación Temporal: Función para calcular predicciones automáticas de temperatura en días o ciclos futuros (ej. día 350).
+
+
+ Modelos Cinéticos / Matemáticos Implementados
+
+1. Ecuación de Regresión Lineal (Ajuste por Mínimos Cuadrados):
+   $$y = m \cdot x + b$$
+   Donde $y$ representa la temperatura predicha (°C), $m$ la pendiente de cambio térmico por unidad de tiempo, $x$ el tiempo/día transcurrido y $b$ la temperatura base inicial.
+
+2. Cálculo de la Pendiente de Tendencia:
+   $$m = \frac{n \sum (x_i y_i) - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}$$
+   Donde $n$ es la cantidad total de lecturas climáticas recopiladas, $x_i$ es la secuencia temporal y $y_i$ la temperatura registrada.
+
+3. Intersección en el Eje de Término Independiente:
+   $$b = \frac{\sum y_i - m \sum x_i}{n}$$
+
+Desglose de variables y parámetros calculados:
+Pendiente ($m$): Mide la tasa instantánea de incremento o decremento de temperatura (°C/día).
+Intersección ($b$): Define la condición térmica de referencia en la serie temporal para el instante $t = 0$.
+Valor Extrapolado ($y_{\text{pred}}$): Estimación cuantitativa de la variable dependiente evaluada en el día objetivo $x_{\text{pred}} = 350$.
+
+Sección de predicciones u optimización:
+La aplicación ejecuta la función predictiva de tendencia para proyectar la variación del clima local. Evaluando la variable independiente $x = 350$ sobre la recta ajustada, el algoritmo devuelve la temperatura máxima estimada en condiciones de cambio lineal.
+
+
+Instalación
+
+Requisitos Previos:
+ Dispositivo Android con versión 5.0 (Lollipop) o superior y cámara funcional[cite: 9].
+ Archivos de activos multimedia e integración incluidos en el proyecto (`cat.jpeg`, `cat-89108.mp3`, credenciales de API en formato JSON)[cite: 9].
+ Entorno de desarrollo MIT App Inventor 2.0+ (para importar y compilar el archivo `.aia` del proyecto)[cite: 9].
+ Extensión de Teachable Machine para MIT App Inventor (`LookExtension`) integrada[cite: 9].
+
+Pasos de compilación e instalación:
+1. Clonar este repositorio o descargar el archivo fuente `.aia`[cite: 9].
+2. Acceder al portal [MIT App Inventor](http://ai2.appinventor.mit.edu/) e ingresar a la cuenta de trabajo[cite: 9].
+3. Importar el proyecto desde el menú **Projects > Import project (.aia) from my computer**[cite: 9].
+4. Verificar la presencia de los activos JSON y bibliotecas en el panel de componentes[cite: 9].
+5. Hacer clic en **Build > Android App (.apk)** para generar el instalador de Android[cite: 9].
+6. Transferir el archivo `.apk` al dispositivo móvil e instalar la aplicación[cite: 9].
+
+
+ Uso
+
+1. Inicie la aplicación **A5_CLASE8_VISUALIZING_CLIMATE_DATA_TECNOLOCHICAS** en el dispositivo Android[cite: 9].
+2. Seleccione la pantalla de análisis deseada (`singleCaseScreen` o `Multicacescim`) desde la interfaz principal[cite: 9].
+3. Presione los botones de sincronización para cargar la serie de datos climáticos desde Google Sheets[cite: 9].
+4. Visualice la gráfica de temperatura y consulte el resultado de la predicción lineal calculada automáticamente.
+
